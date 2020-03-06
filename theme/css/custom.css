@@ -94,7 +94,8 @@ body {
 }
 
 .highlight{
-    background-color: burlywood;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .fa-white {

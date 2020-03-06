@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- Site Properities -->
+    <title>Criar um blog com Python, Pelican e github.io</title>
+
+    <meta name="description" content="">
+
+    <meta property="og:site_name" content="Blog do Prof. Cleber" />
+    <meta property="og:locale" content="pt_br" />
+
+    <meta name="google-site-verification" content="kiAMU_8-KD0qyBUjzPRym2ZL2K7RCddxiOq6d-9S0Vo" />
+
+<meta property="og:title" content="Criar um blog com Python, Pelican e github.io" />
+<meta property="og:url" content="blog-python-pelican-github-io.html"/>
+<meta property="og:description" content=" " />
+<meta property="og:type" content="article" />
+<meta property="og:author" content="Cleber Fonseca" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog do Prof. Cleber">
+    <meta name="twitter:description" content="">
+    <!--meta name="twitter:image" content=""-->
+
+    <link rel="stylesheet" type="text/css" href="https://clebersfonseca.github.io/theme/css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://clebersfonseca.github.io/theme/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://clebersfonseca.github.io/theme/css/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://clebersfonseca.github.io/theme/css/solid.min.css">
+    <link rel="stylesheet" type="text/css" href="https://clebersfonseca.github.io/theme/css/brands.min.css">
+</head>
+<body>
+<div class="ui borderless fixed stackable main menu">
+    <div class="ui text container">
+        <a href="/" class="header item">
+            <img class="logo" src="https://clebersfonseca.github.io/theme/images/logo.png">
+            Blog do Prof. Cleber
+        </a>
+        <a href="http://www.cleberfonseca.com.br" class="item">Site</a>
+    </div>
+</div>
+<div class="ui text container center aligned article-top">
+    <h1 class="ui header article-huge">Criar um blog com Python, Pelican e github.io</h1>
+</div>
+<div class="ui text container tall stacked segment">
+    <div class="overlay">
+        <div class="ui labeled icon vertical menu">
+            <a class="item sharer" data-sharer="twitter" data-title="Criar um blog com Python, Pelican e github.io" data-url="https://clebersfonseca.github.io/blog-python-pelican-github-io.html"><i class="twitter icon"></i> Tweet</a>
+            <a data-sharer="facebook" data-url="https://clebersfonseca.github.io/blog-python-pelican-github-io.html" class="item sharer"><i class="facebook icon"></i> Compartilhar</a>
+            <a class="item sharer" data-sharer="email" data-to="" data-title="Criar um blog com Python, Pelican e github.io" data-subject="Checkout this article!" data-url="https://clebersfonseca.github.io/blog-python-pelican-github-io.html"><i class="mail icon"></i> E-mail</a>
+        </div>
+    </div>
+    <p>Vamos começar pelo princípio o que é esse tal de <a href="https://blog.getpelican.com">Pelican</a>? O Pelican é um sistema que gera sites estáticos sem necessidade de banco de dados ou backend (programação do lado do servidor). Ele funciona utilizando a linguagem Python e converte textos escritos em formatos específicos como por exemplo o Markdown, e sobre esse texto converte em arquivos .html que podem ser disponibilizados em qualquer servidor com acesso a web. O Pelican permite a instalação de plug-ins além de possuir vários temas (interface gráfica do site) a disposição gratuitamente, permitindo também que sejam criados temas personalizados a seu gosto.</p>
+<p>Então como iniciar um projeto utilizando o Pelican:</p>
+<div class="highlight"><pre><span></span><code>pip install pelican
+</code></pre></div>
+
+
+<p>Quando o comando assima for executado serão instalados além do Pelican vários outros pacotes que são utlizados por ele como: jinja2, pygments, pytz, six, entre outros.</p>
+<p>Além de instalar o próprio Pelican também devemos instalar a biblioteca Markdown para fazer com que o Pelican consigam “traduzir” o arquivo Markdown para HTML. Para instalar o Markdown usamos o comando&gt;:</p>
+<div class="highlight"><pre><span></span><code>pip install markdown
+</code></pre></div>
+
+
+<p>Depois dos pacotes e suas dependências instalados devemos iniciar o projeto Pelican para tanto será utilizado o comando:</p>
+<div class="highlight"><pre><span></span><code>Pelican-quickstart
+</code></pre></div>
+
+
+<p>Logo após a execução deste comando serão feitas diversas perguntas a respeito do seu projeto como pode ser visualizado abaixo.</p>
+<div class="highlight"><pre><span></span><code>Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span>  <span class="c1">#pasta onde você quer salvar seu projeto</span>
+What will be the title of this web site? <span class="c1">#Titulo do site  </span>
+Who will be the author of this web site? <span class="c1">#Seu nome aqui  </span>
+What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> - <span class="c1">#pt_BR para portugues brasil</span>
+Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> - <span class="c1">#Url do seu blog  </span>
+What is your URL prefix? <span class="c1">#clebersfonseca.github.io  </span>
+Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> - <span class="c1">#Paginação  </span>
+How many articles per page <span class="k">do</span> you want? <span class="o">[</span><span class="m">10</span><span class="o">]</span> - <span class="c1">#Itens por paginação  </span>
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> - Sim - <span class="c1">#Facilita muito  </span>
+Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> - <span class="c1">#Um server para testes  </span>
+Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span>  - <span class="c1">#Opcional  </span>
+Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> - <span class="c1">#Opcional  </span>
+Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> - <span class="c1">#Opcional  </span>
+Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> - <span class="c1">#Opcional  </span>
+Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> - <span class="c1">#Opcional  </span>
+Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> - <span class="c1">#Opcional</span>
+</code></pre></div>
+
+
+<p>Após responder a todas as perguntas será então criada a seguinte estrutura de pastas e arquivos dentro da pasta do seu projeto:</p>
+<p>├── content <br />
+├── output <br />
+├── pelicanconf.py <br />
+└── publishconf.py</p>
+<p>Para que serve cada um desses arquivos e pastas, vou explicar, a pasta <strong>contente</strong> é onde serão colocados os arquivos Markdown (.md) para o Pelican interpretar e criar os arquivos HTML. A pasta <strong>output</strong> será onde ficaram armazenados os arquivos criados pelo Pelican, arquivos HTML, arquivos do tema escolhido entre outros. O arquivo <strong>pelicanconf.py</strong> é um arquivo de configuração do Pelican, vamos ver algumas de suas propriedades em breve. E o arquivo <strong>publishconf.py</strong> possui algumas configurações do Pelican para o momento da publicação do projeto. Alguns outros arquivos podem ser criados dependendo das respostas do questionário do comando <em>pelican-quickstart</em>.</p>
+<p>Vamos então criar o primeiro post do nosso blog para isso vamos criar um arquivo dentro da pasta <strong>contente</strong> do nosso projeto, como estou utilizando Markdown para criação dos posts o arquivo irá se chamar <strong>hello.md</strong>, e terá o seguinte conteúdo:</p>
+<div class="highlight"><pre><span></span><code>Title: Hello Pelican!  
+Date: 2020-03-06 12:00  
+Category: Python  
+Tags: pelican, markdown  
+Slug: primeiro-artigo  
+Author: Cleber Fonseca 
+Status: published
+Summary: Um resumo sobre o post do Pelican
+
+<span class="gh">#</span>Testando nosso primeiro post no Pelican
+
+Pelican é um gerador de páginas estáticas criado em python para facilitar nossa vida, na criação de blogs, landingpages ou site estáticos.
+</code></pre></div>
+
+
+<p>Após a criação do documento devemos então gerar os arquivos que serão fornecidos aos usuários como uma página HTML normal. Para tanto devemos usar o comando:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pelican</span> <span class="n">contente</span> <span class="o">-</span><span class="n">s</span> <span class="n">pelicanconf</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">o</span> <span class="n">output</span>
+</code></pre></div>
+
+
+<p>Ao executar esse comando o que estamos fazendo é dizer ao Pelican que queremos gerar os arquivos na pasta <strong>content</strong> conforme as configurações existentes no arquivo <strong>pelicanconf.py</strong>. Assim os arquivos HTML serão criados, juntamente com os arquivos estáticos (CSS, JS, Imagens e outros) necessários para a construção da interface.</p>
+<p>Mais informações a respeito do Pelican podem ser obtidas na <a href="https://docs.getpelican.com/en/stable/">documentação</a> do mesmo.</p>
+<h2>Publicar no Github Pages</h2>
+<p>Como a ideia deste post é demonstrar como hospedar o nosso blog no Github pages vamos então instalar o pacote que fará a preparação do nosso site para subir para o github. O comando utilizado é:</p>
+<div class="highlight"><pre><span></span><code>pip install ghp-import
+</code></pre></div>
+
+
+<p>Após a conclusão da instalação poderemos rodar o comando:</p>
+<div class="highlight"><pre><span></span><code>ghp-import -m <span class="s2">&quot;Generate Pelican site&quot;</span> --no-jekyll -b master output
+</code></pre></div>
+
+
+<p>Este comando cria um "<em>commit</em>" para o Github que posteriormente será enviado para o servidor. </p>
+<p>Mas antes vamos criar o repositório que receberá nossa página. Para isso você deve ter uma conta do Github ativa, acessando o Github você pode criar um novo repositório, no caso da criação do blog o mesmo de possuir o seguinte nome: "<strong>nome-do-repositorio</strong>.github.io" obrigatoriamente ele deve terminar com ".github.io". Além disso o repositório deve ser marcado como público.</p>
+<p>Após essa criação devemos adicionar o nosso repositório ao projeto com o seguinte comando:</p>
+<div class="highlight"><pre><span></span><code>git remote add origin git@github.com:seu-usuario/seuusuario.github.io.git
+</code></pre></div>
+
+
+<p>Lembrando que neste caso estou utilizando ssh para conexão com o github, mas o comando correto aparecerá na página inicial do repositório até que seja enviado algum arquivo para o mesmo. Após a inclusão do repositório ao projeto podemos enviar o código fonte ao servidor do Github através do comando:</p>
+<div class="highlight"><pre><span></span><code>git push origin master
+</code></pre></div>
+
+
+<p>Enviando assim o nosso blog para o github. Após esse envio devemos informar ao Github que o nosso repositório é um Github page para tanto devemos acessar a aba <em>Settings</em> do nosso repositório e rolar a página até a parte do Github Pages e marcar qual o <em>branch</em> ou pasta dentro do <em>branch</em> estará a página, no meu caso como esse repositório é somente para o blog será selecionado o <em>branch</em>, <strong>master</strong>.</p>
+<p>Assim depois de alguns segundos ao digitar no navegador: <strong>https://nome-do-repositorio.github.io</strong> veremos o nosso blog no ar.</p>
+<p>Lembrando que sempre que for adicionado um novo post ou página teremos de rodar os comandos abaixo para publicar o blog com as alterações no ar.</p>
+<div class="highlight"><pre><span></span><code>pelican contente -s pelicanconf.py -o output
+
+ghp-import -m <span class="s2">&quot;Generate Pelican site&quot;</span> --no-jekyll -b master output
+
+git push origin master
+</code></pre></div>
+
+
+<p>Fontes:</p>
+<p><a href="https://blog.getpelican.com">Pelican</a> <br />
+<a href="https://github.com/">Github</a></p>
+
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = 'https://clebersfonseca.github.io/blog-python-pelican-github-io.html';
+    this.page.identifier = 'cleberfonseca';
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//cleberfonseca.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div>
+
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+            <div class="eight wide column">
+                <h4 class="ui inverted header">Links</h4>
+                <div class="ui inverted link list">
+                    <a href="http://www.cleberfonseca.com.br" class="item">Site Prof. Cleber Fonseca</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header">Redes Sociais</h4>
+                    <a href="https://www.facebook.com/profcleberfonseca/" target="_blank">
+                        <i class="fab fa-facebook fa-inverted fa-2x fa-white" data-fa-mask="fas fa-circle"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/clebersf/" target="_blank">
+                        <i class="fab fa-linkedin fa-inverted fa-2x fa-white" data-fa-mask="fas fa-circle"></i>
+                    </a>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <img class="ui centered mini image" src="https://clebersfonseca.github.io/theme/images/logo.png">
+        <div class="ui horizontal inverted small divided link list">
+            <a href="http://www.cleberfonseca.com.br" class="item">Site Prof. Cleber Fonseca</a>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="https://clebersfonseca.github.io/theme/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://clebersfonseca.github.io/theme/js/semantic.min.js"></script>
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-62342750-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/sharer.js/0.2.4/sharer.min.js"></script>
+    <script id="dsq-count-scr" src="//cleberfonseca.disqus.com/count.js" async></script>
+</body>
+</html>
